@@ -11,6 +11,9 @@ USTH ICT 2022 Distributed Systems
 Group Info
 =======================
 
-* Name 1 (ID1)
-* Name 2 (ID2)
+* Nguyen Hoang Nam (BI10-123)
+* Nguyen Huy Hung (BI10-071)
+* Hoang Huu Huy (BI10-077)
+* Nguyen Quoc Hung (BI10-072)
+* Nguyen Minh Duc (BI10-031)
 
