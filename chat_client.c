@@ -6,6 +6,18 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
+void send_file(int serv, char *s, int sz, char* serverFilename, char* clientFilename) {
+    while (1) {
+        write(serv, serverFilename, strlen(serverFilename));
+
+        int len = 0;
+        while((len = read(file, s, sz)) > 0) {
+            write(serv, s, len);
+        }
+        close(file);
+    }
+}
+
 int main(int argc, char* argv[]) {
     int so;
     char s[100];

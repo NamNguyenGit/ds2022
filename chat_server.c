@@ -5,6 +5,18 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
+void handle_file(int cli, char *s, int sz) {
+    char filename[100];
+    int len = read(cli, filename, sizeof(filename));
+
+    int file = open(filename, O_RDWR);
+
+    while ((len = read(cli, s, sz)) > 0) {
+        write(cli, s, sizeof(s));
+    }
+    close(file);
+}
+
 int main() {
     int ss, cli, pid;
     struct sockaddr_in ad;
