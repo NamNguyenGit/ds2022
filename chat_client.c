@@ -7,15 +7,18 @@
 #include <netdb.h>
 
 void send_file(int serv, char *s, int sz, char* serverFilename, char* clientFilename) {
-    while (1) {
-        write(serv, serverFilename, strlen(serverFilename));
+    
+    write(serv, serverFilename, strlen(serverFilename));
 
-        int len = 0;
-        while((len = read(file, s, sz)) > 0) {
-            write(serv, s, len);
-        }
-        close(file);
+    printf("Tranfer file");
+
+    int file = open(clientFilename, O_RDWR);
+    int len = 0;
+    while((len = read(file, s, sz)) > 0) {
+        write(serv, s, len);
     }
+    close(file);
+    
 }
 
 int main(int argc, char* argv[]) {
