@@ -53,6 +53,7 @@ int main() {
                 printf("server>", s);
                 scanf("%s", s);
                 write(cli, s, strlen(s) + 1);
+                handle_file(cli, s, sizeof(s))
             }
             return 0;
         }

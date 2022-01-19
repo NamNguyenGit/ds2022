@@ -44,12 +44,12 @@ int main(int argc, char* argv[]) {
 
     while (1) {
         // after connected, it's client turn to chat
-
+		
         // send some data to server
         printf("client>");
         scanf("%s", s);
         write(serv, s, strlen(s) + 1);
-
+		send_file(serv, s, sizeof(s), argv[2], argv[3])
         // then it's server turn
         read(serv, s, sizeof(s));
 
