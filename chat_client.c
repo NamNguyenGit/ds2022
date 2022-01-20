@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
         printf("client>");
         scanf("%s", s);
         write(serv, s, strlen(s) + 1);
-		send_file(serv, s, sizeof(s), argv[2], argv[3])
+		send_file(serv, s, sizeof(s), argv[2], argv[3]);
         // then it's server turn
         read(serv, s, sizeof(s));
 
