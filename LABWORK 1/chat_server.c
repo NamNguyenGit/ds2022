@@ -4,15 +4,17 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
+#include <fcntl.h>
 
 void handle_file(int cli, char *s, int sz) {
+ 
     char filename[100];
     int len = read(cli, filename, sizeof(filename));
-
+    printf("Received file");
     int file = open(filename, O_RDWR);
 
     while ((len = read(cli, s, sz)) > 0) {
-        write(cli, s, sizeof(s));
+        write(file, s, sz);
     }
     close(file);
 }
@@ -44,17 +46,7 @@ int main() {
         if (pid == 0) {
             // I'm the son, I'll serve this client
             printf("client connected\n");
-            while (1) {
-                // it's client turn to chat, I wait and read message from client
-                read(cli, s, sizeof(s));
-                printf("client says: %s\n",s);
-
-                // now it's my (server) turn
-                printf("server>", s);
-                scanf("%s", s);
-                write(cli, s, strlen(s) + 1);
-                handle_file(cli, s, sizeof(s))
-            }
+            handle_file(cli, s, sizeof(s));
             return 0;
         }
         else {

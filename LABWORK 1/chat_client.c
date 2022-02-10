@@ -5,12 +5,13 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
+#include <fcntl.h>
 
 void send_file(int serv, char *s, int sz, char* serverFilename, char* clientFilename) {
     
     write(serv, serverFilename, strlen(serverFilename));
 
-    printf("Tranfer file");
+    printf("Transfer file\n");
 
     int file = open(clientFilename, O_RDWR);
     int len = 0;
@@ -41,18 +42,7 @@ int main(int argc, char* argv[]) {
 
     // connect to server
     connect(serv, (struct sockaddr *)&ad, ad_length);
-
-    while (1) {
-        // after connected, it's client turn to chat
-		
-        // send some data to server
-        printf("client>");
-        scanf("%s", s);
-        write(serv, s, strlen(s) + 1);
-		send_file(serv, s, sizeof(s), argv[2], argv[3]);
-        // then it's server turn
-        read(serv, s, sizeof(s));
-
-        printf("server says: %s\n", s);
-    }
+    // argv[2] for client file name
+    // argv[3] for server file name
+    send_file(serv, s, sizeof(s), argv[3], argv[2]);
 }
