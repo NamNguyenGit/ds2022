@@ -18,3 +18,6 @@ Group Info
 * Nguyen Minh Duc (BI10-031)
 * Nguyễn Thành Vinh (BI8-187)
 
+Group Topic
+=======================
+Remote shell using RPC for multiple user
