@@ -16,4 +16,5 @@ Group Info
 * Hoang Huu Huy (BI10-077)
 * Nguyen Quoc Hung (BI10-072)
 * Nguyen Minh Duc (BI10-031)
+* Nguyễn Thành Vinh (BI8-187)
 
